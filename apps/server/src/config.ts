@@ -1,0 +1,3 @@
+export const SERVER_PORT = 3001;
+export const WS_PATH = "/ws";
+

@@ -1,0 +1,82 @@
+/* ============================================
+   强制横屏模式
+   当检测到竖屏时，自动旋转页面到横屏
+   ============================================ */
+
+/* 竖屏时强制旋转 */
+@media (orientation: portrait) {
+  /* 旋转整个页面容器 */
+  html {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  body {
+    width: 100vh;
+    height: 100vw;
+    overflow: hidden;
+    transform: none;
+    position: relative;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  /* 添加旋转提示层 */
+  body::before {
+    content: "请旋转设备以获得最佳体验";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    background: rgba(0, 0, 0, 0.85);
+    color: #f0d392;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    z-index: 9999;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: fadeInOut 3s ease-in-out;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+/* 横屏时正常显示 */
+@media (orientation: landscape) {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+}

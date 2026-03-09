@@ -1,0 +1,296 @@
+/* ============================================
+   首页压缩式布局样式
+   目标：将首页高度压缩到 ≤600px，适配 iPhone SE (667px)
+   ============================================ */
+
+/* 页面容器优化 */
+.page-shell.lobby-compact {
+  padding: 12px 12px 24px;
+  min-height: auto;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* 主内容区 - 默认垂直布局（竖屏） */
+.lobby-compact-main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Hero 精简版样式 (~120px) */
+.hero-card.hero-compact {
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+.hero-card.hero-compact h1 {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.hero-card.hero-compact .hero-copy {
+  display: none; /* 隐藏说明文字 */
+}
+
+.hero-card.hero-compact .status-bar {
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.hero-card.hero-compact .status-bar span {
+  flex: 1;
+  min-height: 32px;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+}
+
+/* 快速开房突出样式 (~160px) */
+.panel.panel-primary {
+  padding: 20px 18px;
+  margin-bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(220, 167, 91, 0.18) 0%,
+    rgba(7, 20, 18, 0.85) 60%
+  );
+  border: 2px solid rgba(220, 167, 91, 0.4);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(220, 167, 91, 0.25),
+    0 0 40px rgba(220, 167, 91, 0.15);
+}
+
+.panel.panel-primary h2 {
+  color: #f0d392;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.panel.panel-primary .hint {
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+
+.panel.panel-primary .primary-button {
+  min-height: 60px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* 底部两列布局样式 (~140px) */
+.panel-grid-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.panel-grid-bottom .panel {
+  padding: 16px 14px;
+}
+
+.panel-grid-bottom h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.panel-grid-bottom .field {
+  margin-bottom: 10px;
+}
+
+.panel-grid-bottom .field input {
+  min-height: 44px;
+  font-size: 0.9rem;
+}
+
+.panel-grid-bottom .primary-button,
+.panel-grid-bottom .secondary-button {
+  min-height: 44px;
+  font-size: 0.92rem;
+}
+
+/* 响应式适配 */
+
+/* 小屏幕 (<375px) - 进一步压缩 */
+@media (max-width: 374px) {
+  .page-shell.lobby-compact {
+    padding: 10px 10px 20px;
+  }
+
+  .hero-card.hero-compact {
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+
+  .panel.panel-primary {
+    padding: 16px 14px;
+    margin-bottom: 12px;
+  }
+
+  .panel-grid-bottom {
+    gap: 10px;
+  }
+
+  .panel-grid-bottom .panel {
+    padding: 14px 12px;
+  }
+}
+
+/* 横屏模式 - 极致压缩垂直高度，利用水平空间 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .page-shell.lobby-compact {
+    padding: 8px 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  /* Hero 区域 - 极简单行布局 (~40px) */
+  .hero-card.hero-compact {
+    padding: 6px 14px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+  }
+
+  .hero-card.hero-compact .eyebrow {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .hero-card.hero-compact h1 {
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .hero-card.hero-compact .status-bar {
+    margin: 0;
+    gap: 8px;
+    flex: 1;
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  .hero-card.hero-compact .status-bar span {
+    min-height: 28px;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  /* 主内容区 - 三列横向布局，充满剩余空间 */
+  .lobby-compact-main {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 14px;
+    flex: 1;
+    align-items: stretch;
+  }
+
+  /* 快速开房 - 左侧突出 */
+  .panel.panel-primary {
+    padding: 16px 18px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .panel.panel-primary h2 {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .panel.panel-primary .hint {
+    font-size: 0.8rem;
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.4;
+  }
+
+  .panel.panel-primary .primary-button {
+    min-height: 56px;
+    font-size: 1.05rem;
+    margin-top: auto;
+  }
+
+  /* 底部两列改为横向布局的一部分 */
+  .panel-grid-bottom {
+    display: contents; /* 让子元素直接参与父级 grid */
+  }
+
+  .panel-grid-bottom .panel {
+    padding: 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .panel-grid-bottom h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .panel-grid-bottom .field {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .panel-grid-bottom .field span {
+    font-size: 0.82rem;
+    margin: 0;
+  }
+
+  .panel-grid-bottom .field input {
+    min-height: 42px;
+    font-size: 0.9rem;
+  }
+
+  .panel-grid-bottom .primary-button,
+  .panel-grid-bottom .secondary-button {
+    min-height: 42px;
+    font-size: 0.9rem;
+    margin-top: auto;
+  }
+}
+
+/* PC 端 (>900px) - 居中显示，恢复舒适间距 */
+@media (min-width: 900px) {
+  .page-shell.lobby-compact {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 20px 32px;
+  }
+
+  .hero-card.hero-compact {
+    padding: 18px 22px;
+    margin-bottom: 18px;
+  }
+
+  .panel.panel-primary {
+    padding: 24px 22px;
+    margin-bottom: 18px;
+  }
+
+  .panel-grid-bottom {
+    gap: 16px;
+  }
+
+  .panel-grid-bottom .panel {
+    padding: 18px 16px;
+  }
+}

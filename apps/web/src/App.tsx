@@ -4,12 +4,15 @@ import type { Meld, Tile, TileSuit } from "@changshu-mahjong/shared";
 import { useAppStore } from "./store";
 import { buildTableRenderModel, type TableSeatRenderModel } from "./table-render-model";
 import { getTileAssetUrl } from "./tile-assets";
+import { lockLandscape } from "./landscape-utils";
 
 export default function App() {
   const connect = useAppStore((state) => state.connect);
 
   useEffect(() => {
     connect();
+    // 尝试锁定横屏（仅在支持的浏览器中有效）
+    lockLandscape();
   }, [connect]);
 
   return (
@@ -42,50 +45,53 @@ function LobbyPage() {
   }, [navigate, room?.roomId]);
 
   return (
-    <main className="page-shell">
-      <section className="hero-card">
+    <main className="page-shell lobby-compact">
+      {/* Hero 精简版 */}
+      <section className="hero-card hero-compact">
         <p className="eyebrow">常熟麻将</p>
-        <h1>游客即可开桌，断线继续回到原局</h1>
-        <p className="hero-copy">
-          首次访问会自动生成昵称，你可以在开局前随时修改。关闭网页后再次进入，仍会记住你的名字和当前身份。
-        </p>
+        <h1>游客即可开桌</h1>
         <div className="status-bar">
-          <span>连接状态：{status}</span>
-          <span>当前昵称：{session?.displayName ?? "生成中"}</span>
+          <span>连接：{status}</span>
+          <span>昵称：{session?.displayName ?? "生成中"}</span>
         </div>
       </section>
 
-      <section className="panel-grid">
-        <article className="panel">
-          <h2>身份设置</h2>
-          <label className="field">
-            <span>昵称</span>
-            <input value={displayNameDraft} maxLength={12} onChange={(event) => setDisplayNameDraft(event.target.value)} />
-          </label>
-          <button className="primary-button" type="button" onClick={saveDisplayName}>
-            保存昵称
-          </button>
-        </article>
-
-        <article className="panel">
+      {/* 主内容区 - 横屏时三列布局 */}
+      <div className="lobby-compact-main">
+        {/* 快速开房 - 突出显示 */}
+        <section className="panel panel-primary">
           <h2>快速开房</h2>
-          <p className="hint">创建后会生成 6 位房间号，其他玩家可直接输入房间号加入。</p>
+          <p className="hint">创建后生成 6 位房间号</p>
           <button className="primary-button" type="button" onClick={createRoom}>
             创建房间
           </button>
-        </article>
+        </section>
 
-        <article className="panel">
-          <h2>加入房间</h2>
-          <label className="field">
-            <span>房间号</span>
-            <input value={roomCodeDraft} maxLength={6} onChange={(event) => setRoomCodeDraft(event.target.value.replace(/\D/g, ""))} />
-          </label>
-          <button className="secondary-button" type="button" onClick={joinRoom}>
-            加入
-          </button>
-        </article>
-      </section>
+        {/* 底部两列 */}
+        <section className="panel-grid-bottom">
+          <article className="panel">
+            <h2>身份设置</h2>
+            <label className="field">
+              <span>昵称</span>
+              <input value={displayNameDraft} maxLength={12} onChange={(event) => setDisplayNameDraft(event.target.value)} />
+            </label>
+            <button className="primary-button" type="button" onClick={saveDisplayName}>
+              保存
+            </button>
+          </article>
+
+          <article className="panel">
+            <h2>加入房间</h2>
+            <label className="field">
+              <span>房间号</span>
+              <input value={roomCodeDraft} maxLength={6} onChange={(event) => setRoomCodeDraft(event.target.value.replace(/\D/g, ""))} />
+            </label>
+            <button className="secondary-button" type="button" onClick={joinRoom}>
+              加入
+            </button>
+          </article>
+        </section>
+      </div>
 
       {error ? <div className="feedback error">{error}</div> : null}
     </main>

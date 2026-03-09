@@ -5,3 +5,10 @@ dist
 coverage
 *.tsbuildinfo
 
+
+# Claude 配置
+.claude/
+
+# 测试文件
+*-preview.html
+*-test.html

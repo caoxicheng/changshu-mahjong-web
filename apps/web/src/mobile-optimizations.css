@@ -1,0 +1,346 @@
+/* 移动端专项优化样式 */
+
+/* ========================================
+   1. 触摸区域优化 - 增大可点击区域
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 手牌按钮 - 增大到至少 64px */
+  .hand-grid-flat .tile-button,
+  .drawn-tile-slot .tile-button {
+    min-height: 64px !important;
+    padding: 2px !important;
+    border-radius: 14px !important;
+  }
+
+  .hand-grid-flat .emoji-tile,
+  .drawn-tile-slot .emoji-tile {
+    min-height: 60px !important;
+    border-radius: 12px !important;
+    padding: 6px 3px !important;
+    gap: 3px !important;
+  }
+
+  .hand-grid-flat .emoji-tile-glyph,
+  .drawn-tile-slot .emoji-tile-glyph {
+    font-size: 1.6rem !important;
+  }
+
+  .hand-grid-flat .emoji-tile-image,
+  .drawn-tile-slot .emoji-tile-image {
+    height: 32px !important;
+  }
+
+  /* 操作按钮 - 增大到 48px */
+  .compact-action-row .secondary-button {
+    min-height: 48px !important;
+    padding: 0 16px !important;
+    border-radius: 14px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+  }
+
+  /* 新摸牌区域 */
+  .drawn-tile-slot {
+    width: 52px !important;
+    flex: 0 0 52px !important;
+    gap: 5px !important;
+  }
+
+  .drawn-tile-label {
+    min-height: 22px !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+/* ========================================
+   2. 视觉层次优化 - 突出重要信息
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 当前回合玩家高亮 */
+  .table-seat-zone.active {
+    border-color: rgba(217, 176, 102, 0.95) !important;
+    box-shadow:
+      inset 0 0 0 2px rgba(217, 176, 102, 0.4),
+      0 0 28px rgba(217, 176, 102, 0.18) !important;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 0 2px rgba(217, 176, 102, 0.4),
+        0 0 28px rgba(217, 176, 102, 0.18);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 0 2px rgba(217, 176, 102, 0.6),
+        0 0 36px rgba(217, 176, 102, 0.28);
+    }
+  }
+
+  /* 中央出牌区域放大 */
+  .center-focus-card {
+    min-height: 64px !important;
+    padding: 10px 12px !important;
+    border-radius: 20px !important;
+  }
+
+  .center-focus-card .tile-token.compact {
+    min-height: 44px !important;
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .center-focus-card strong {
+    font-size: 1rem !important;
+  }
+
+  /* 剩余牌数显示更突出 */
+  .hud-status span:last-child {
+    background: rgba(220, 167, 91, 0.2) !important;
+    color: #f0d392 !important;
+    font-weight: 600 !important;
+  }
+}
+
+/* ========================================
+   3. 布局优化 - 更合理的空间分配
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 游戏桌面区域 - 调整上下比例 */
+  .table-stage {
+    grid-template-rows: 45% minmax(0, 55%) !important;
+  }
+
+  /* 底部区域 - 优先显示手牌 */
+  .table-lower-zone {
+    grid-template-rows: auto minmax(0, 1fr) !important;
+    padding: 10px 12px 12px !important;
+  }
+
+  /* 手牌区域 */
+  .hand-grid {
+    gap: 5px !important;
+  }
+
+  /* 自己的信息区域简化 */
+  .self-summary {
+    padding: 0 2px !important;
+  }
+
+  .self-summary-main strong {
+    font-size: 0.95rem !important;
+  }
+
+  .self-summary-main span {
+    font-size: 0.78rem !important;
+    color: rgba(248, 241, 221, 0.65) !important;
+  }
+}
+
+/* ========================================
+   4. 对手信息优化 - 压缩次要信息
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 对手座位区域 */
+  .table-seat-zone {
+    padding: 8px 10px !important;
+  }
+
+  /* 对手身份信息 */
+  .seat-identity {
+    gap: 6px !important;
+  }
+
+  .seat-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.88rem !important;
+  }
+
+  /* 对手徽章 - 只显示关键信息 */
+  .seat-badges span {
+    min-height: 24px !important;
+    padding: 0 8px !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* 隐藏"BOT"标签，用头像颜色区分 */
+  .seat-badges span:first-child {
+    display: none;
+  }
+
+  /* 出牌区域 */
+  .discard-matrix {
+    padding: 6px !important;
+    gap: 3px !important;
+  }
+
+  .tile-token.mini {
+    min-height: 28px !important;
+    padding: 3px !important;
+    border-radius: 9px !important;
+  }
+
+  .tile-token.mini .tile-suit {
+    font-size: 0.88rem !important;
+  }
+}
+
+/* ========================================
+   5. 顶部菜单优化 - 更易触达
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* HUD 按钮 */
+  .hud-menu-button,
+  .hud-leave-button {
+    min-height: 36px !important;
+    padding: 0 12px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .hud-icon-chevron {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  /* 状态指示器 */
+  .hud-status span {
+    min-height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* ========================================
+   6. 性能优化 - 减少重绘
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 使用 transform 代替 margin/padding 动画 */
+  .tile-button:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  .secondary-button:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  /* 减少模糊效果 */
+  .game-table-surface {
+    backdrop-filter: blur(8px) !important;
+  }
+
+  .hud-menu-sheet {
+    backdrop-filter: blur(10px) !important;
+  }
+}
+
+/* ========================================
+   7. 横屏模式优化
+   ======================================== */
+
+@media (max-width: 900px) and (orientation: landscape) {
+  /* 横屏时调整布局 */
+  .table-stage {
+    grid-template-rows: minmax(0, 1fr) 140px !important;
+  }
+
+  /* 手牌区域横向排列 */
+  .hand-grid-flat .tile-button,
+  .drawn-tile-slot .tile-button {
+    min-height: 52px !important;
+  }
+
+  .hand-grid-flat .emoji-tile,
+  .drawn-tile-slot .emoji-tile {
+    min-height: 48px !important;
+  }
+
+  .hand-grid-flat .emoji-tile-glyph,
+  .drawn-tile-slot .emoji-tile-glyph {
+    font-size: 1.3rem !important;
+  }
+
+  /* 操作按钮 */
+  .compact-action-row .secondary-button {
+    min-height: 40px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* ========================================
+   8. 暗色模式下的对比度增强
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 增强文字对比度 */
+  .seat-identity strong,
+  .self-summary-main strong {
+    color: #fff !important;
+  }
+
+  /* 增强按钮对比度 */
+  .primary-button {
+    background: linear-gradient(135deg, #e8b968 0%, #f5dd9f 100%) !important;
+    box-shadow: 0 2px 8px rgba(220, 167, 91, 0.3) !important;
+  }
+
+  .secondary-button {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* 手牌卡片增强 */
+  .emoji-tile {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+/* ========================================
+   9. 触摸反馈优化
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 添加触摸高亮 */
+  .tile-button:active .emoji-tile {
+    background: linear-gradient(180deg, rgba(220, 167, 91, 0.3), rgba(220, 167, 91, 0.15)) !important;
+    transform: scale(0.96);
+  }
+
+  .secondary-button:active {
+    background: rgba(255, 255, 255, 0.18) !important;
+  }
+
+  /* 禁用长按选择文本 */
+  .tile-button,
+  .secondary-button,
+  .seat-avatar,
+  .tile-token {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ========================================
+   10. 安全区域适配（刘海屏）
+   ======================================== */
+
+@media (max-width: 640px) {
+  .in-game-shell {
+    padding: max(8px, env(safe-area-inset-top))
+             max(6px, env(safe-area-inset-right))
+             max(8px, env(safe-area-inset-bottom))
+             max(6px, env(safe-area-inset-left)) !important;
+  }
+}

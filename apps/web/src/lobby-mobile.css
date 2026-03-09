@@ -1,0 +1,597 @@
+/* ========================================
+   首页移动端优化样式
+   Mobile-First Design - 移动端优先
+   ======================================== */
+
+/* ========================================
+   基础样式重置 - 移动端优先
+   ======================================== */
+
+/* 移动端默认样式 */
+.page-shell {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 16px 12px 32px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   Hero 区域 - 移动端优化
+   ======================================== */
+
+.hero-card {
+  padding: 24px 20px;
+  border-radius: 24px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  letter-spacing: 0.4em;
+  font-size: 11px;
+  font-weight: 600;
+  color: #d9b066;
+  text-transform: uppercase;
+}
+
+.hero-card h1 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f8f1dd 0%, #d9b066 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-copy {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(248, 241, 221, 0.82);
+  margin-bottom: 20px;
+}
+
+/* 状态栏 - 移动端优化 */
+.status-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.status-bar span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(248, 241, 221, 0.88);
+  font-size: 0.88rem;
+  backdrop-filter: blur(10px);
+}
+
+/* ========================================
+   面板网格 - 移动端单列布局
+   ======================================== */
+
+.panel-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 0;
+}
+
+/* ========================================
+   面板卡片 - 移动端优化
+   ======================================== */
+
+.panel {
+  padding: 24px 20px;
+  border-radius: 20px;
+  background: rgba(7, 20, 18, 0.82);
+  border: 1px solid rgba(255, 220, 160, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+}
+
+.panel h2 {
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+  color: #f8f1dd;
+  font-weight: 600;
+}
+
+.hint {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(248, 241, 221, 0.68);
+  margin-bottom: 16px;
+}
+
+/* ========================================
+   表单元素 - 移动端优化
+   ======================================== */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.field > span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(248, 241, 221, 0.78);
+}
+
+.field input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 223, 159, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 200ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: rgba(217, 176, 102, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(217, 176, 102, 0.15);
+}
+
+.field input::placeholder {
+  color: rgba(248, 241, 221, 0.4);
+}
+
+/* ========================================
+   按钮 - 移动端优化
+   ======================================== */
+
+.primary-button,
+.secondary-button {
+  width: 100%;
+  min-height: 56px;
+  border-radius: 16px;
+  padding: 0 24px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #dca75b 0%, #f0d392 100%);
+  color: #15231f;
+  box-shadow:
+    0 4px 12px rgba(220, 167, 91, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  margin-top: 0;
+}
+
+.primary-button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 2px 8px rgba(220, 167, 91, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 0;
+}
+
+.secondary-button:active {
+  transform: translateY(1px) scale(0.98);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* 按钮加载状态 */
+.primary-button:disabled,
+.secondary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ========================================
+   错误反馈 - 移动端优化
+   ======================================== */
+
+.feedback {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.feedback.error {
+  background: rgba(178, 62, 47, 0.25);
+  border: 1px solid rgba(255, 140, 118, 0.35);
+  color: #ffb8a8;
+}
+
+/* ========================================
+   特殊优化 - 快速开房面板
+   ======================================== */
+
+/* 快速开房面板 - 视觉突出 */
+.panel-grid > .panel:nth-child(2) {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 167, 91, 0.15) 0%,
+    rgba(7, 20, 18, 0.82) 50%
+  );
+  border: 1px solid rgba(220, 167, 91, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(220, 167, 91, 0.2);
+}
+
+.panel-grid > .panel:nth-child(2) h2 {
+  color: #f0d392;
+}
+
+/* ========================================
+   加入房间面板 - 数字输入优化
+   ======================================== */
+
+.panel-grid > .panel:nth-child(3) input {
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
+   动画效果
+   ======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.panel {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.panel-grid > .panel:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.panel-grid > .panel:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.panel-grid > .panel:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* ========================================
+   触摸反馈优化
+   ======================================== */
+
+.primary-button::before,
+.secondary-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.primary-button:active::before,
+.secondary-button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* ========================================
+   横屏模式优化（移动端）
+   ======================================== */
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .page-shell {
+    padding: 12px 16px 24px;
+  }
+
+  .hero-card {
+    padding: 16px 20px;
+  }
+
+  .hero-card h1 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .hero-copy {
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+  }
+
+  .status-bar {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .status-bar span {
+    flex: 1;
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .panel h2 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .field input {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .primary-button,
+  .secondary-button {
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ========================================
+   小屏幕优化（<375px）
+   ======================================== */
+
+@media (max-width: 374px) {
+  .page-shell {
+    padding: 12px 10px 24px;
+  }
+
+  .hero-card {
+    padding: 20px 16px;
+  }
+
+  .hero-card h1 {
+    font-size: 1.35rem;
+  }
+
+  .hero-copy {
+    font-size: 0.85rem;
+  }
+
+  .panel {
+    padding: 20px 16px;
+  }
+
+  .field input {
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .primary-button,
+  .secondary-button {
+    min-height: 52px;
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
+   PC端适配（简单适配）
+   ======================================== */
+
+@media (min-width: 901px) {
+  .page-shell {
+    width: min(680px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 32px 0 64px;
+  }
+
+  .hero-card {
+    padding: 32px 36px;
+    margin-bottom: 24px;
+  }
+
+  .hero-card h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+    max-width: 560px;
+  }
+
+  .status-bar {
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .status-bar span {
+    flex: 1;
+    min-height: 44px;
+    font-size: 0.92rem;
+  }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .panel {
+    padding: 28px 24px;
+  }
+
+  .panel h2 {
+    font-size: 1.25rem;
+  }
+
+  .field input {
+    min-height: 54px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    min-height: 54px;
+    font-size: 1.05rem;
+  }
+
+  /* PC端悬停效果 */
+  .primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 16px rgba(220, 167, 91, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .secondary-button:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .field input:hover {
+    border-color: rgba(217, 176, 102, 0.4);
+  }
+}
+
+/* ========================================
+   大屏幕优化（>1200px）
+   ======================================== */
+
+@media (min-width: 1201px) {
+  .page-shell {
+    width: min(800px, calc(100% - 80px));
+    padding: 48px 0 80px;
+  }
+
+  .hero-card {
+    padding: 40px 48px;
+  }
+
+  .hero-card h1 {
+    font-size: 2.8rem;
+  }
+
+  .panel-grid {
+    gap: 24px;
+  }
+
+  .panel {
+    padding: 32px 28px;
+  }
+}
+
+/* ========================================
+   暗色模式增强
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .hero-card,
+  .panel {
+    background: rgba(7, 20, 18, 0.88);
+    border-color: rgba(255, 220, 160, 0.2);
+  }
+
+  .field input {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .primary-button {
+    box-shadow:
+      0 4px 14px rgba(220, 167, 91, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+}
+
+/* ========================================
+   无障碍优化
+   ======================================== */
+
+/* 聚焦指示器 */
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.field input:focus-visible {
+  outline: 3px solid rgba(217, 176, 102, 0.6);
+  outline-offset: 2px;
+}
+
+/* 减少动画（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+
+@media print {
+  .page-shell {
+    background: white;
+    color: black;
+  }
+
+  .hero-card,
+  .panel {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+
+  .primary-button,
+  .secondary-button {
+    border: 1px solid #000;
+  }
+}
